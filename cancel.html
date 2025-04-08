@@ -4,75 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Canceled - PantsPalace</title>
-    <style>
-        body {
-            font-family: "SF Pro Display", -apple-system, Helvetica, Arial, sans-serif;
-            background-color: #f5f5f7;
-            color: #1d1d1f;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        header {
-            padding: 20px 0;
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        header h1 {
-            font-size: 32px;
-            font-weight: 700;
-            margin: 0;
-            letter-spacing: -0.5px;
-        }
-        .content {
-            flex: 1;
-            padding: 40px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .content p {
-            font-size: 19px;
-            color: #6e6e73;
-            line-height: 1.6;
-            margin: 20px 0;
-        }
-        .content a {
-            color: #007aff;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 17px;
-            transition: color 0.3s ease;
-        }
-        .content a:hover {
-            color: #005bb5;
-            text-decoration: underline;
-        }
-        footer {
-            background-color: #fff;
-            padding: 20px 0;
-            font-size: 14px;
-            color: #6e6e73;
-            border-top: 1px solid #e5e5ea;
-            margin-top: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Payment Canceled</h1>
+        <h1>PantsPalace</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="support.html">Support</a>
+            <a href="howtobuy.html">How to Buy</a>
+        </nav>
     </header>
-    <div class="content">
-        <p>You canceled your payment. No pants for you!</p>
-        <p><a href="index.html">Go back to buy something.</a></p>
-    </div>
+    <main>
+        <div class="content">
+            <h2>Payment Canceled</h2>
+            <p>Your payment was canceled. No charges were made.</p>
+            <a href="index.html" class="back">Back to Home</a>
+        </div>
+    </main>
     <footer>
-        <p>© 2025 PantsPalace. All rights reserved.</p>
+        <p>&copy; 2025 PantsPalace. All rights reserved.</p>
     </footer>
 </body>
 </html>
