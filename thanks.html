@@ -4,102 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You - PantsPalace</title>
-    <style>
-        body {
-            font-family: "SF Pro Display", -apple-system, Helvetica, Arial, sans-serif;
-            background-color: #f5f5f7;
-            color: #1d1d1f;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        header {
-            padding: 20px 0;
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        header h1 {
-            font-size: 32px;
-            font-weight: 700;
-            margin: 0;
-            letter-spacing: -0.5px;
-        }
-        .content {
-            flex: 1;
-            padding: 40px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .content h2 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #1d1d1f;
-        }
-        .content p {
-            font-size: 19px;
-            color: #6e6e73;
-            line-height: 1.6;
-            margin: 20px 0;
-        }
-        .content a {
-            display: inline-block;
-            border-radius: 25px;
-            padding: 12px 24px;
-            font-size: 17px;
-            font-weight: 500;
-            text-decoration: none;
-            transition: background-color 0.3s ease, transform 0.1s ease;
-            margin: 10px;
-        }
-        .content a.order {
-            background-color: #007aff;
-            color: #fff;
-        }
-        .content a.order:hover {
-            background-color: #005bb5;
-            transform: translateY(-2px);
-        }
-        .content a.back {
-            background-color: transparent;
-            color: #007aff;
-            border: 1px solid #007aff;
-        }
-        .content a.back:hover {
-            background-color: #007aff1a;
-            transform: translateY(-2px);
-        }
-        footer {
-            background-color: #fff;
-            padding: 20px 0;
-            font-size: 14px;
-            color: #6e6e73;
-            border-top: 1px solid #e5e5ea;
-            margin-top: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <h1>PantsPalace</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="support.html">Support</a>
+            <a href="howtobuy.html">How to Buy</a>
+        </nav>
     </header>
-
-    <div class="content">
-        <h2>Thank You for Your Purchase!</h2>
-        <p>Your order has been successfully placed. We’ll process it soon, and you’ll receive a confirmation shortly.</p>
-        <p>Want to check your order details? View your order history below.</p>
-        <a href="order.html" class="order">View Orders</a>
-        <a href="index.html" class="back">Back to Home</a>
-    </div>
-
+    <main>
+        <div class="content">
+            <h2>Thank You for Your Purchase!</h2>
+            <p>Your order has been successfully submitted. You will receive a confirmation email shortly.</p>
+            <a href="index.html" class="back">Back to Home</a>
+        </div>
+    </main>
     <footer>
-        <p>© 2025 PantsPalace. All rights reserved.</p>
+        <p>&copy; 2025 PantsPalace. All rights reserved.</p>
     </footer>
 </body>
 </html>
