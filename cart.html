@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - PantsPalace</title>
+    <style>
+        body {
+            font-family: "SF Pro Display", -apple-system, Helvetica, Arial, sans-serif;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            padding: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+        .content {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .content p {
+            font-size: 19px;
+            color: #6e6e73;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e5e5ea;
+        }
+        th {
+            background-color: #f5f5f7;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        td {
+            font-size: 16px;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        .remove-btn {
+            background-color: #ff3b30;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .remove-btn:hover {
+            background-color: #d32f2f;
+        }
+        .total {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 20px 0;
+            text-align: right;
+        }
+        .checkout-btn, .back-btn {
+            display: inline-block;
+            border-radius: 25px;
+            padding: 12px 24px;
+            font-size: 17px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+        .checkout-btn {
+            background-color: #007aff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .checkout-btn:hover {
+            background-color: #005bb5;
+            transform: translateY(-2px);
+        }
+        .back-btn {
+            background-color: transparent;
+            color: #007aff;
+            border: 1px solid #007aff;
+            margin-left: 10px;
+        }
+        .back-btn:hover {
+            background-color: #007aff1a;
+            transform: translateY(-2px);
+        }
+        footer {
+            background-color: #fff;
+            padding: 20px 0;
+            font-size: 14px;
+            color: #6e6e73;
+            border-top: 1px solid #e5e5ea;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your Cart</h1>
+    </header>
+
+    <div class="content">
+        <p id="empty-cart" style="display: none;">Your cart is empty. <a href="index.html">Start shopping now!</a></p>
+        <table id="cart-table" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cart-body"></tbody>
+        </table>
+        <div class="total" id="cart-total"></div>
+        <button class="checkout-btn" id="checkout-btn" style="display: none;">Checkout</button>
+        <a href="index.html" class="back-btn">Continue Shopping</a>
+    </div>
+
+    <footer>
+        <p>© 2025 PantsPalace. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function displayCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartBody = document.getElementById('cart-body');
+            const cartTable = document.getElementById('cart-table');
+            const emptyCart = document.getElementById('empty-cart');
+            const cartTotal = document.getElementById('cart-total');
+            const checkoutBtn = document.getElementById('checkout-btn');
+
+            cartBody.innerHTML = '';
+            if (cart.length === 0) {
+                emptyCart.style.display = 'block';
+                cartTable.style.display = 'none';
+                cartTotal.style.display = 'none';
+                checkoutBtn.style.display = 'none';
+                return;
+            }
+
+            emptyCart.style.display = 'none';
+            cartTable.style.display = 'table';
+            cartTotal.style.display = 'block';
+            checkoutBtn.style.display = 'inline-block';
+
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.itemName}</td>
+                    <td>${item.size}</td>
+                    <td>$${item.price.toFixed(2)}</td>
+                    <td><button class="remove-btn" onclick="removeFromCart(${index})">Remove</button></td>
+                `;
+                cartBody.appendChild(row);
+            });
+
+            cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+        }
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        document.getElementById('checkout-btn').addEventListener('click', () => {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) return;
+
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            const itemNames = cart.map(item => `${item.itemName} (Size: ${item.size})`).join(', ');
+
+            // Store cart items in localStorage for order history
+            let orders = JSON.parse(localStorage.getItem('orders')) || [];
+            cart.forEach(item => {
+                orders.push({
+                    itemName: item.itemName,
+                    amount: item.price.toFixed(2),
+                    email: 'Pending', // Will be updated after email.html
+                    timestamp: new Date().toISOString(),
+                    size: item.size
+                });
+            });
+            localStorage.setItem('orders', JSON.stringify(orders));
+
+            // Clear cart after checkout
+            localStorage.removeItem('cart');
+
+            // Redirect to email.html with total and item names
+            window.location.href = `email.html?item_name=${encodeURIComponent(itemNames)}&amount=${total.toFixed(2)}`;
+        });
+
+        // Display cart on page load
+        displayCart();
+    </script>
+</body>
+</html>
