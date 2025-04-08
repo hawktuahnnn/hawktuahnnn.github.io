@@ -1,1 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Wide-Leg Jeans - PantsPalace</title>
+    <style>
+        body {
+            font-family: "SF Pro Display", -apple-system, Helvetica, Arial, sans-serif;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            padding: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+        .content {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .content img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .content h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1d1d1f;
+        }
+        .content p {
+            font-size: 19px;
+            color: #6e6e73;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .content a {
+            display: inline-block;
+            background-color: #007aff;
+            color: #fff;
+            border-radius: 25px;
+            padding: 12px 24px;
+            font-size: 17px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+        .content a:hover {
+            background-color: #005bb5;
+            transform: translateY(-2px);
+        }
+        .content a.back {
+            background-color: transparent;
+            color: #007aff;
+            border: 1px solid #007aff;
+            margin-left: 10px;
+        }
+        .content a.back:hover {
+            background-color: #007aff1a;
+            transform: translateY(-2px);
+        }
+        .cart-icon {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #007aff;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+        footer {
+            background-color: #fff;
+            padding: 20px 0;
+            font-size: 14px;
+            color: #6e6e73;
+            border-top: 1px solid #e5e5ea;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PantsPalace</h1>
+    </header>
 
+    <div class="content">
+        <img src="images/image2.png" alt="Black Wide-Leg Jeans">
+        <h2>Black Wide-Leg Jeans</h2>
+        <p>Price: $50</p>
+        <a href="order-pants2.html">Buy Now</a>
+        <a href="index.html" class="back">Back to Home</a>
+    </div>
+
+    <a href="cart.html" class="cart-icon">🛒</a>
+
+    <footer>
+        <p>© 2025 PantsPalace. All rights reserved.</p>
+    </footer>
+</body>
+</html>
