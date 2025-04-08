@@ -4,104 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How to Buy - PantsPalace</title>
-    <style>
-        body {
-            font-family: "SF Pro Display", -apple-system, Helvetica, Arial, sans-serif;
-            background-color: #f5f5f7;
-            color: #1d1d1f;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        header {
-            padding: 20px 0;
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        header h1 {
-            font-size: 32px;
-            font-weight: 700;
-            margin: 0;
-            letter-spacing: -0.5px;
-        }
-        .content {
-            flex: 1;
-            padding: 40px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: left;
-        }
-        .content h1 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-        .content p {
-            font-size: 17px;
-            color: #6e6e73;
-            line-height: 1.6;
-            margin: 15px 0;
-        }
-        .content a {
-            display: inline-block;
-            background-color: transparent;
-            color: #007aff;
-            border: 1px solid #007aff;
-            border-radius: 25px;
-            padding: 12px 24px;
-            font-size: 17px;
-            font-weight: 500;
-            text-decoration: none;
-            margin-top: 20px;
-            transition: background-color 0.3s ease, transform 0.1s ease;
-        }
-        .content a:hover {
-            background-color: #007aff1a;
-            transform: translateY(-2px);
-        }
-        footer {
-            background-color: #fff;
-            padding: 20px 0;
-            font-size: 14px;
-            color: #6e6e73;
-            border-top: 1px solid #e5e5ea;
-            margin-top: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>How to Buy</h1>
+        <h1>PantsPalace</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="support.html">Support</a>
+        </nav>
     </header>
-    <div class="content">
-        <h1>How to Buy a Product</h1>
-        <p>Follow these steps to purchase a product using your credit card:</p>
-        <p>1. Use 4G or LTE Connection: Ensure you’re connected via 4G or LTE mobile data, not a VPN. Using a VPN can makes it so that the payment verification doesnt go trough.</p>
-        <p>2. Select Your Product: Browse our available products and choose the one you’d like to purchase.</p>
-        <p>3. Right before purchase it will ask for your paypal email, if you dont fill this in correct the funds wont reach your account.</p>
-        <p>4. Proceed to Checkout.</p>
-        <p>5. If it does not say pay with credit card, try to start over. This is because the scripts forces Paypal 90% of the time to go to credit card guest checkout, so sometimes it fails.</p>
-        <p>6. Pay as Guest: Select the “Pay as Guest” option at checkout—no account needed.</p>
-        <p>7. Choose the Right Country: Pick the country that matches your credit card’s to ensure smooth processing.</p>
-        <p>8. Enter Payment Details: Provide your credit card information in the secure payment form.</p>
-        <p>9. Fill in Billing Address: Enter the exact billing address linked to your credit card. It must match perfectly for the transaction to succeed.</p>
-        <p>10. Keep the Amount Under 500$: Ensure your order is below 500$ (highest is 400$). Amounts above this may trigger 3D Secure authentication with your bank, making the transaction fail.</p>
-        <p>11. Review Fees: We charge a 15% fee on all orders. For example, if your product is 100$, the total will be 85$ (100$ - 15$ fee). This fee supports our fast service.</p>
-        <p>12. Submit Payment: Double-check everything and click “Pay Now” to complete the purchase.</p>
-        <p>13. Wait for Processing: Most orders are processed within 30 minutes to 24 hours, depending on your bank’s speed.</p>
-        <p>14. As soon as we recieved the funds, 85% will be sent back immediatly, we keep all of the orders perfectly so there should not be any problems. If they do occur, dont hesitate to contact us!</p>
-        <p>Keeping your order below 500$ avoids triggering 3D Secure, a bank security protocol for larger transactions, ensuring a quicker process. Starting with 4G or LTE (no VPN) and providing the correct billing address tied to your credit card are essential for successful payment verification. Mismatches or VPN use can cause delays or rejections. With our 15% fee, we prioritize speed—most orders are done in 30 minutes, though some banks may take up to 24 hours. You’ll get confirmation once it’s complete!</p>
-        <p>IMPORTANT NOTE: The lower the purchase, the higher the chance it goes trough. Any 3ds verification with the bank, has nothing to do with us.</p>
-        <a href="index.html">Back to Home</a>
-    </div>
+    <main>
+        <div class="content">
+            <h2>How to Buy</h2>
+            <p>1. Browse our collection on the homepage.<br>
+               2. Click "Buy Now" on your favorite pants.<br>
+               3. Select your size and add to cart.<br>
+               4. Review your cart and proceed to checkout.<br>
+               5. Enter your PayPal email to complete the purchase.</p>
+            <a href="index.html" class="back">Back to Home</a>
+        </div>
+    </main>
     <footer>
-        <p>© 2025 PantsPalace. All rights reserved.</p>
+        <p>&copy; 2025 PantsPalace. All rights reserved.</p>
     </footer>
 </body>
 </html>
