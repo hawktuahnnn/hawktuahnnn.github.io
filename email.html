@@ -3,171 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enter PayPal Email - PantsPalace</title>
-    <style>
-        body {
-            font-family: "SF Pro Display", -apple-system, Helvetica, Arial, sans-serif;
-            background-color: #f5f5f7;
-            color: #1d1d1f;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        header {
-            padding: 20px 0;
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        header h1 {
-            font-size: 32px;
-            font-weight: 700;
-            margin: 0;
-            letter-spacing: -0.5px;
-        }
-        .content {
-            flex: 1;
-            padding: 40px 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .content p {
-            font-size: 19px;
-            color: #6e6e73;
-            line-height: 1.6;
-            margin: 20px 0;
-        }
-        .content input[type="email"] {
-            width: 100%;
-            padding: 12px;
-            margin: 15px 0;
-            border: 1px solid #d2d2d7;
-            border-radius: 8px;
-            font-size: 16px;
-            color: #1d1d1f;
-            background-color: #fff;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-        .content button {
-            background-color: #007aff;
-            color: #fff;
-            border: none;
-            border-radius: 25px;
-            padding: 12px 24px;
-            font-size: 17px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.1s ease;
-        }
-        .content button:disabled {
-            background-color: #d2d2d7;
-            cursor: not-allowed;
-        }
-        .content button:not(:disabled):hover {
-            background-color: #005bb5;
-            transform: translateY(-2px);
-        }
-        footer {
-            background-color: #fff;
-            padding: 20px 0;
-            font-size: 14px;
-            color: #6e6e73;
-            border-top: 1px solid #e5e5ea;
-            margin-top: auto;
-        }
-    </style>
+    <title>Checkout - PantsPalace</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Enter PayPal Email</h1>
+        <h1>PantsPalace</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="support.html">Support</a>
+            <a href="howtobuy.html">How to Buy</a>
+        </nav>
     </header>
-
-    <div class="content">
-        <p>Please provide your PayPal email to process your order. Double-check to ensure the funds are sent to the correct account.</p>
-        <input type="email" id="paypalEmail" placeholder="Enter your PayPal email" required>
-        <button id="continueButton" disabled>Continue</button>
-
-        <form id="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="display: none;">
-            <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="passiethomaat@gmail.com">
-            <input type="hidden" name="item_name" id="itemName">
-            <input type="hidden" name="amount" id="amount">
-            <input type="hidden" name="currency_code" value="USD">
-            <input type="hidden" name="return" value="https://your-username.github.io/pants-store/thanks.html" id="returnUrl">
-            <input type="hidden" name="cancel_return" value="https://your-username.github.io/pants-store/cancel.html">
-            <input type="hidden" name="no_shipping" value="1">
-            <input type="hidden" name="rm" value="2">
-            <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
-            <input type="hidden" name="custom" id="customField">
-        </form>
-    </div>
-
+    <main>
+        <div class="content">
+            <h2>Enter Your PayPal Email</h2>
+            <p>Please provide your PayPal email to complete the purchase.</p>
+            <input type="email" id="paypalEmail" placeholder="Enter your PayPal email" required>
+            <button onclick="submitOrder()">Submit Order</button>
+            <a href="cart.html" class="back">Back to Cart</a>
+        </div>
+    </main>
     <footer>
-        <p>© 2025 PantsPalace. All rights reserved.</p>
+        <p>&copy; 2025 PantsPalace. All rights reserved.</p>
     </footer>
-
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const itemName = urlParams.get("item_name");
-        const amount = urlParams.get("amount");
-
-        document.getElementById("itemName").value = itemName;
-        document.getElementById("amount").value = amount;
-
-        const emailInput = document.getElementById("paypalEmail");
-        const continueButton = document.getElementById("continueButton");
-        const paypalForm = document.getElementById("paypalForm");
-        const returnUrl = document.getElementById("returnUrl");
-        const customField = document.getElementById("customField");
-
-        emailInput.addEventListener("input", () => {
-            const email = emailInput.value.trim();
-            continueButton.disabled = !email || !email.includes("@");
-        });
-
-        continueButton.addEventListener("click", () => {
-            const email = emailInput.value.trim();
-            if (email && email.includes("@")) {
-                continueButton.disabled = true;
-                continueButton.textContent = "Processing...";
-
-                const order = {
-                    itemName: itemName,
-                    amount: amount,
-                    email: email,
-                    timestamp: new Date().toISOString(),
-                    status: "Pending"
-                };
-
-                const scriptUrl = "https://script.google.com/macros/s/AKfycbwn2nGJ3kmIuHElZpP5hXNkDjv5cagy3MVRzgmd0orl-t8uBEGH0nlT_V74acfNTWm4/exec";
-
-                fetch(scriptUrl, {
-                    method: "POST",
-                    body: JSON.stringify(order),
-                    headers: { "Content-Type": "application/json" },
-                    mode: "no-cors"
-                })
-                .then(() => {
-                    console.log("Order logged as Pending:", order);
-                    const tempRowId = Date.now();
-                    customField.value = tempRowId;
-                    returnUrl.value = `https://your-username.github.io/pants-store/thanks.html?row=${tempRowId}`;
-                    paypalForm.submit();
-                })
-                .catch(error => {
-                    console.error("Error logging order:", error);
-                    alert("Failed to log order, but proceeding: " + error.message);
-                    customField.value = Date.now();
-                    returnUrl.value = `https://your-username.github.io/pants-store/thanks.html?row=${customField.value}`;
-                    paypalForm.submit();
-                });
+        function submitOrder() {
+            const email = document.getElementById('paypalEmail').value;
+            if (!email) {
+                alert('Please enter a valid email.');
+                return;
             }
-        });
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                alert('Your cart is empty.');
+                return;
+            }
+            const order = {
+                email: email,
+                items: cart,
+                timestamp: new Date().toISOString()
+            };
+            fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
+                method: 'POST',
+                body: JSON.stringify(order),
+                headers: { 'Content-Type': 'application/json' },
+                mode: 'no-cors'
+            })
+            .then(() => {
+                alert('Order submitted successfully!');
+                localStorage.removeItem('cart');
+                window.location.href = 'thanks.html';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your order. Please try again.');
+            });
+        }
     </script>
 </body>
 </html>
