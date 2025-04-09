@@ -135,14 +135,12 @@
     </footer>
 
     <script>
-        // Smooth scrolling for Products button
-        document.querySelector('.scroll-to-products').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector('#products').scrollIntoView({ behavior: 'smooth' });
-        });
-        document.querySelector('.scroll-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector('#products').scrollIntoView({ behavior: 'smooth' });
+        // Smooth scrolling for Products button and Shop Now button
+        document.querySelectorAll('.scroll-to-products, .scroll-btn').forEach(element => {
+            element.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('#products').scrollIntoView({ behavior: 'smooth' });
+            });
         });
     </script>
 </body>
