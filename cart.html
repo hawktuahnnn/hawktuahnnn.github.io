@@ -23,7 +23,7 @@
         <div class="cart-content">
             <h1>Your Cart</h1>
             <div id="cart-items" class="cart-items"></div>
-            <button class="order-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+            <button id="checkout-btn" class="order-btn" disabled>Proceed to Checkout</button>
             <a href="index.html#products" class="back-btn">Continue Shopping</a>
         </div>
     </section>
@@ -40,34 +40,48 @@
         function displayCart() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const cartItemsDiv = document.getElementById('cart-items');
+            const checkoutBtn = document.getElementById('checkout-btn');
             cartItemsDiv.innerHTML = '';
             if (cart.length === 0) {
                 cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
-                return;
+                checkoutBtn.disabled = true; // Disable button if cart is empty
+                checkoutBtn.style.opacity = '0.5'; // Visual cue
+                checkoutBtn.style.cursor = 'not-allowed';
+            } else {
+                cart.forEach((item, index) => {
+                    cartItemsDiv.innerHTML += `
+                        <div class="cart-item">
+                            <h3>${item.itemName}</h3>
+                            <p>Size: ${item.size}</p>
+                            <p>Price: $${item.price}</p>
+                            <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                        </div>
+                    `;
+                });
+                checkoutBtn.disabled = false; // Enable button if cart has items
+                checkoutBtn.style.opacity = '1'; // Full opacity
+                checkoutBtn.style.cursor = 'pointer';
             }
-            cart.forEach((item, index) => {
-                cartItemsDiv.innerHTML += `
-                    <div class="cart-item">
-                        <h3>${item.itemName}</h3>
-                        <p>Size: ${item.size}</p>
-                        <p>Price: $${item.price}</p>
-                        <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
-                    </div>
-                `;
-            });
         }
 
         function removeFromCart(index) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             cart.splice(index, 1);
             localStorage.setItem('cart', JSON.stringify(cart));
-            displayCart();
+            displayCart(); // Refresh cart display
         }
 
         function proceedToCheckout() {
-            window.location.href = 'email.html';
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length > 0) {
+                window.location.href = 'email.html';
+            }
         }
 
+        // Attach event listener to checkout button
+        document.getElementById('checkout-btn').addEventListener('click', proceedToCheckout);
+
+        // Display cart on page load
         displayCart();
     </script>
 </body>
