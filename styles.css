@@ -211,6 +211,7 @@ body {
     opacity: 0;
     transform: translateY(-20px);
     transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 2000; /* Above nav */
 }
 
 .cart-notification.show {
@@ -225,6 +226,7 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center; /* Center horizontally */
 }
 
 .order-content {
@@ -258,12 +260,14 @@ body {
 
 .size-select {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
     margin-bottom: 20px;
     border: 1px solid var(--dark-beige);
     background-color: var(--sandy-beige);
     color: var(--text-color);
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
 .order-btn {
@@ -290,6 +294,7 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center; /* Center horizontally */
 }
 
 .support-content {
@@ -318,6 +323,9 @@ body {
     padding: 120px 40px 80px;
     background-color: var(--light-tan);
     min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center horizontally */
 }
 
 .cart-content {
@@ -374,11 +382,12 @@ body {
 
 /* Checkout Section */
 .checkout-section {
-    padding: 120px 40px 80px;
+    padding: 120px 40px 80px; /* Extra padding to clear nav */
     background-color: var(--light-tan);
     min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center; /* Center horizontally */
 }
 
 .checkout-content {
@@ -408,6 +417,12 @@ body {
     color: var(--text-color);
     border-radius: 5px;
     box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.email-input:focus {
+    border-color: var(--warm-taupe);
+    outline: none;
 }
 
 .email-input::placeholder {
