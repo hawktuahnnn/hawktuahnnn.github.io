@@ -7,32 +7,49 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>PantsPalace</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="support.html">Support</a>
-            <a href="howtobuy.html">How to Buy</a>
-            <a href="cart.html">Cart</a>
-        </nav>
-    </header>
-    <main>
-        <div class="content">
-            <img id="pants-image" alt="Pants">
-            <h2 id="pants-name"></h2>
-            <p id="pants-price"></p>
-            <select class="size-select">
-                <option value="Small">Small</option>
-                <option value="Medium" selected>Medium</option>
-                <option value="Large">Large</option>
-            </select>
-            <button id="add-to-cart-btn">Add to Cart</button>
-            <a id="back-link" href="#" class="back">Back</a>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="PantsPalace Logo" class="logo"></a>
         </div>
-    </main>
+        <div class="nav-right">
+            <a href="support.html" class="nav-btn">Support</a>
+            <a href="howtobuy.html" class="nav-btn">How to Buy</a>
+            <a href="index.html#products" class="nav-btn">Products</a>
+        </div>
+    </nav>
+
+    <!-- Order Section -->
+    <section class="order-section">
+        <div class="order-content">
+            <img id="pants-image" alt="Pants" class="order-image">
+            <div class="order-details">
+                <h1 id="pants-name"></h1>
+                <p id="pants-price"></p>
+                <select class="size-select">
+                    <option value="Small">Small</option>
+                    <option value="Medium" selected>Medium</option>
+                    <option value="Large">Large</option>
+                </select>
+                <button id="add-to-cart-btn" class="order-btn">Add to Cart</button>
+                <a href="index.html#products" class="back-btn">Back to Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Button -->
+    <a href="cart.html" class="cart-btn">Cart</a>
+
+    <!-- Cart Notification -->
+    <div class="cart-notification" id="cart-notification">
+        <p>Item added to cart!</p>
+    </div>
+
+    <!-- Footer -->
     <footer>
         <p>© 2025 PantsPalace. All rights reserved.</p>
     </footer>
+
     <script>
         const pantsData = [
             { id: 1, name: "Light Blue Wide-Leg Jeans", price: 40, image: "images/image1.png" },
@@ -47,29 +64,30 @@
             { id: 10, name: "Striped Wide Pants", price: 50, image: "images/image10.png" }
         ];
 
-        // Get the pants ID from the URL
+        // Get pants ID from URL
         const urlParams = new URLSearchParams(window.location.search);
-        const pantsId = parseInt(urlParams.get('id')) || 1; // Default to 1 if no ID
+        const pantsId = parseInt(urlParams.get('id')) || 1;
+        const pants = pantsData.find(p => p.id === pantsId) || pantsData[0];
 
-        // Find the pants data
-        const pants = pantsData.find(p => p.id === pantsId) || pantsData[0]; // Fallback to first item
-
-        // Update the page content
+        // Populate page
         document.getElementById('pants-image').src = pants.image;
         document.getElementById('pants-image').alt = pants.name;
         document.getElementById('pants-name').textContent = pants.name;
-        document.getElementById('pants-price').textContent = `Price: $${pants.price}`;
-        document.getElementById('back-link').href = `pants.html?id=${pants.id}`;
+        document.getElementById('pants-price').textContent = `$${pants.price}`;
 
-        // Add to cart functionality
+        // Add to cart with notification
         document.getElementById('add-to-cart-btn').addEventListener('click', function() {
-            const sizeSelect = document.querySelector('.size-select');
-            const size = sizeSelect.value;
+            const size = document.querySelector('.size-select').value;
             const cartItem = { itemName: pants.name, price: pants.price, size: size };
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             cart.push(cartItem);
             localStorage.setItem('cart', JSON.stringify(cart));
-            alert(`${pants.name} (Size: ${size}) added to cart!`);
+
+            // Show notification
+            const notification = document.getElementById('cart-notification');
+            notification.textContent = `${pants.name} (Size: ${size}) added to cart!`;
+            notification.classList.add('show');
+            setTimeout(() => notification.classList.remove('show'), 3000);
         });
     </script>
 </body>
