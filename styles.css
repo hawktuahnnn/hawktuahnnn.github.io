@@ -372,6 +372,49 @@ body {
     background-color: var(--warm-taupe);
 }
 
+/* Checkout Section */
+.checkout-section {
+    padding: 120px 40px 80px;
+    background-color: var(--light-tan);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.checkout-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.checkout-content h1 {
+    font-size: 36px;
+    margin: 0 0 20px;
+    color: var(--dark-beige);
+}
+
+.checkout-content p {
+    font-size: 18px;
+    margin: 0 0 30px;
+}
+
+.email-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border: 1px solid var(--dark-beige);
+    background-color: var(--sandy-beige);
+    color: var(--text-color);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.email-input::placeholder {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
 /* Back Button */
 .back-btn {
     display: inline-block;
