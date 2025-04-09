@@ -7,25 +7,35 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>PantsPalace</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="support.html">Support</a>
-            <a href="howtobuy.html">How to Buy</a>
-        </nav>
-    </header>
-    <main>
-        <div class="content">
-            <h2>Your Cart</h2>
-            <div id="cart-items"></div>
-            <button onclick="proceedToCheckout()">Proceed to Checkout</button>
-            <a href="index.html" class="back">Continue Shopping</a>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="PantsPalace Logo" class="logo"></a>
         </div>
-    </main>
+        <div class="nav-right">
+            <a href="support.html" class="nav-btn">Support</a>
+            <a href="index.html#products" class="nav-btn">Products</a>
+        </div>
+    </nav>
+
+    <!-- Cart Section -->
+    <section class="cart-section">
+        <div class="cart-content">
+            <h1>Your Cart</h1>
+            <div id="cart-items" class="cart-items"></div>
+            <button class="order-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+            <a href="index.html#products" class="back-btn">Continue Shopping</a>
+        </div>
+    </section>
+
+    <!-- Cart Button -->
+    <a href="cart.html" class="cart-btn">Cart</a>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 PantsPalace. All rights reserved.</p>
+        <p>© 2025 PantsPalace. All rights reserved.</p>
     </footer>
+
     <script>
         function displayCart() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -37,11 +47,11 @@
             }
             cart.forEach((item, index) => {
                 cartItemsDiv.innerHTML += `
-                    <div>
+                    <div class="cart-item">
                         <h3>${item.itemName}</h3>
                         <p>Size: ${item.size}</p>
                         <p>Price: $${item.price}</p>
-                        <button onclick="removeFromCart(${index})">Remove</button>
+                        <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
                     </div>
                 `;
             });
