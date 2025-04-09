@@ -1,46 +1,306 @@
-/* Container for all pants cards */
+/* Beige Color Palette */
+:root {
+    --sandy-beige: #f5e8d5; /* Backgrounds */
+    --warm-taupe: #d9c8a9;  /* Accents, buttons */
+    --light-tan: #e8d8c1;   /* Cards, secondary backgrounds */
+    --dark-beige: #b89b7a;  /* Text, hover states */
+    --text-color: #4a3c2f;  /* Darker beige for text */
+}
+
+/* General Styles */
+body {
+    font-family: "Arial", sans-serif;
+    background-color: var(--sandy-beige);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Top Navigation */
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--warm-taupe);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.nav-logo .logo {
+    height: 50px;
+}
+
+.nav-right {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-btn {
+    background-color: var(--light-tan);
+    color: var(--text-color);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-btn:hover {
+    background-color: var(--dark-beige);
+    color: var(--sandy-beige);
+    transform: translateY(-2px);
+}
+
+/* Lander Section */
+.lander {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--sandy-beige);
+    text-align: center;
+    padding: 0 40px;
+}
+
+.lander-content {
+    max-width: 800px;
+}
+
+.lander-logo {
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.lander h1 {
+    font-size: 48px;
+    margin: 0 0 10px;
+    color: var(--dark-beige);
+}
+
+.tagline {
+    font-size: 24px;
+    margin: 0 0 30px;
+    font-style: italic;
+}
+
+.lander-text h2 {
+    font-size: 28px;
+    margin: 20px 0 10px;
+    color: var(--dark-beige);
+}
+
+.lander-text p {
+    font-size: 18px;
+    margin: 0 0 20px;
+}
+
+.scroll-btn {
+    display: inline-block;
+    background-color: var(--dark-beige);
+    color: var(--sandy-beige);
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.scroll-btn:hover {
+    background-color: var(--warm-taupe);
+    transform: scale(1.05);
+}
+
+/* Products Section */
+.products-section {
+    padding: 80px 40px;
+    background-color: var(--light-tan);
+}
+
+.products-section h2 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--dark-beige);
+}
+
 .items {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 equal-width columns */
-    gap: 20px; /* Space between cards */
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-/* Individual pants card */
 .item {
-    background-color: #fff;
-    border-radius: 0; /* Sharp corners */
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    background-color: var(--sandy-beige);
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
 }
 
-/* Pants image inside the card */
 .item img {
     width: 100%;
-    height: 300px; /* Adjust height as needed */
-    object-fit: cover; /* Ensures images fit without distortion */
-    border-radius: 0; /* Sharp corners */
+    height: 250px;
+    object-fit: cover;
 }
 
-/* Styles for the clickable link */
+.item h3 {
+    font-size: 18px;
+    margin: 10px 0 5px;
+    color: var(--dark-beige);
+}
+
+.item p {
+    font-size: 16px;
+    margin: 0;
+}
+
 .item-link {
-    text-decoration: none; /* No underline */
-    color: inherit; /* Inherits text color */
-    cursor: pointer; /* Hand cursor to indicate clickability */
+    text-decoration: none;
+    color: inherit;
 }
 
-/* Hover effect for feedback */
 .item-link:hover .item {
-    transform: scale(1.05); /* Slightly enlarge card */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Add shadow */
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Focus style for keyboard navigation */
-.item-link:focus .item {
-    outline: 2px solid #007bff; /* Blue outline; adjust color as needed */
+/* Cart Button */
+.cart-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--dark-beige);
+    color: var(--sandy-beige);
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    animation: pulse 2s infinite;
+    transition: background-color 0.3s ease;
+}
+
+.cart-btn:hover {
+    background-color: var(--warm-taupe);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Cart Notification */
+.cart-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--dark-beige);
+    color: var(--sandy-beige);
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.cart-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Order Section */
+.order-section {
+    padding: 120px 40px 80px;
+    background-color: var(--light-tan);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.order-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.order-image {
+    width: 50%;
+    height: auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.order-details {
+    width: 50%;
+}
+
+.order-details h1 {
+    font-size: 36px;
+    margin: 0 0 20px;
+    color: var(--dark-beige);
+}
+
+.order-details p {
+    font-size: 24px;
+    margin: 0 0 20px;
+}
+
+.size-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border: 1px solid var(--dark-beige);
+    background-color: var(--sandy-beige);
+    color: var(--text-color);
+}
+
+.order-btn {
+    background-color: var(--dark-beige);
+    color: var(--sandy-beige);
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.order-btn:hover {
+    background-color: var(--warm-taupe);
+    transform: scale(1.05);
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--dark-beige);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.back-btn:hover {
+    color: var(--text-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--warm-taupe);
+    padding: 20px;
+    text-align: center;
+    color: var(--sandy-beige);
+    font-size: 14px;
 }
