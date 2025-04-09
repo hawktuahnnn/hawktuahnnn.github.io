@@ -32,7 +32,7 @@
     <!-- Cart Button -->
     <a href="cart.html" class="cart-btn">Cart</a>
 
-    <!-- Cart Notification -->
+    <!-- Notification -->
     <div class="cart-notification" id="cart-notification">
         <p>Order submitted successfully!</p>
     </div>
@@ -45,8 +45,8 @@
     <script>
         document.getElementById('submit-order-btn').addEventListener('click', function() {
             const email = document.getElementById('paypalEmail').value;
+            const notification = document.getElementById('cart-notification');
             if (!email) {
-                const notification = document.getElementById('cart-notification');
                 notification.textContent = 'Please enter a valid email.';
                 notification.classList.add('show');
                 setTimeout(() => notification.classList.remove('show'), 3000);
@@ -54,7 +54,6 @@
             }
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             if (cart.length === 0) {
-                const notification = document.getElementById('cart-notification');
                 notification.textContent = 'Your cart is empty.';
                 notification.classList.add('show');
                 setTimeout(() => notification.classList.remove('show'), 3000);
@@ -72,7 +71,6 @@
                 mode: 'no-cors'
             })
             .then(() => {
-                const notification = document.getElementById('cart-notification');
                 notification.textContent = 'Order submitted successfully!';
                 notification.classList.add('show');
                 setTimeout(() => {
@@ -83,7 +81,6 @@
             })
             .catch(error => {
                 console.error('Error:', error);
-                const notification = document.getElementById('cart-notification');
                 notification.textContent = 'Error submitting order. Please try again.';
                 notification.classList.add('show');
                 setTimeout(() => notification.classList.remove('show'), 3000);
