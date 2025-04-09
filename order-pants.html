@@ -14,7 +14,6 @@
         </div>
         <div class="nav-right">
             <a href="support.html" class="nav-btn">Support</a>
-            <a href="howtobuy.html" class="nav-btn">How to Buy</a>
             <a href="index.html#products" class="nav-btn">Products</a>
         </div>
     </nav>
@@ -64,18 +63,15 @@
             { id: 10, name: "Striped Wide Pants", price: 50, image: "images/image10.png" }
         ];
 
-        // Get pants ID from URL
         const urlParams = new URLSearchParams(window.location.search);
         const pantsId = parseInt(urlParams.get('id')) || 1;
         const pants = pantsData.find(p => p.id === pantsId) || pantsData[0];
 
-        // Populate page
         document.getElementById('pants-image').src = pants.image;
         document.getElementById('pants-image').alt = pants.name;
         document.getElementById('pants-name').textContent = pants.name;
         document.getElementById('pants-price').textContent = `$${pants.price}`;
 
-        // Add to cart with notification
         document.getElementById('add-to-cart-btn').addEventListener('click', function() {
             const size = document.querySelector('.size-select').value;
             const cartItem = { itemName: pants.name, price: pants.price, size: size };
@@ -83,7 +79,6 @@
             cart.push(cartItem);
             localStorage.setItem('cart', JSON.stringify(cart));
 
-            // Show notification
             const notification = document.getElementById('cart-notification');
             notification.textContent = `${pants.name} (Size: ${size}) added to cart!`;
             notification.classList.add('show');
