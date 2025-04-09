@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pants - PantsPalace</title>
+    <title>Order Pants - PantsPalace</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,8 +21,13 @@
             <img id="pants-image" alt="Pants">
             <h2 id="pants-name"></h2>
             <p id="pants-price"></p>
-            <a id="buy-now-link" href="#">Buy Now</a>
-            <a href="index.html" class="back">Back to Home</a>
+            <select class="size-select">
+                <option value="Small">Small</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="Large">Large</option>
+            </select>
+            <button id="add-to-cart-btn">Add to Cart</button>
+            <a id="back-link" href="#" class="back">Back</a>
         </div>
     </main>
     <footer>
@@ -54,7 +59,18 @@
         document.getElementById('pants-image').alt = pants.name;
         document.getElementById('pants-name').textContent = pants.name;
         document.getElementById('pants-price').textContent = `Price: $${pants.price}`;
-        document.getElementById('buy-now-link').href = `order-pants.html?id=${pants.id}`;
+        document.getElementById('back-link').href = `pants.html?id=${pants.id}`;
+
+        // Add to cart functionality
+        document.getElementById('add-to-cart-btn').addEventListener('click', function() {
+            const sizeSelect = document.querySelector('.size-select');
+            const size = sizeSelect.value;
+            const cartItem = { itemName: pants.name, price: pants.price, size: size };
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(cartItem);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${pants.name} (Size: ${size}) added to cart!`);
+        });
     </script>
 </body>
 </html>
