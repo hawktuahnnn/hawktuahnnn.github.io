@@ -4,6 +4,7 @@
     --light-tan: #e8d8c1;
     --dark-beige: #b89b7a;
     --text-color: #4a3c2f;
+    --nav-height: 80px; /* Height of the navigation bar */
 }
 
 body {
@@ -194,7 +195,7 @@ body {
 
 .cart-notification {
     position: fixed;
-    top: 80px;
+    top: calc(var(--nav-height) + 10px);
     right: 20px;
     background-color: var(--dark-beige);
     color: var(--sandy-beige);
@@ -204,12 +205,14 @@ body {
     opacity: 0;
     transform: translateY(-20px);
     transition: opacity 0.3s ease, transform 0.3s ease;
-    z-index: 2000;
+    z-index: 500;
+    pointer-events: none;
 }
 
 .cart-notification.show {
     opacity: 1;
     transform: translateY(0);
+    z-index: 2000;
 }
 
 .order-section {
@@ -301,7 +304,7 @@ body {
 
 .support-content h1 {
     font-size: 36px;
-    margin: 0 0 20px;
+    margin: 0 0  Putnam: 20px;
     color: var(--dark-beige);
 }
 
@@ -498,11 +501,10 @@ footer {
     font-size: 14px;
 }
 
-/* Updated Discord Button Styles */
 .support-content .discord-btn {
     display: inline-block;
-    background-color: #b89b7a; /* Direct hex for --dark-beige */
-    color: #4a3c2f; /* Direct hex for --text-color */
+    background-color: #b89b7a;
+    color: #4a3c2f;
     padding: 12px 30px;
     text-decoration: none;
     border-radius: 5px;
@@ -513,7 +515,7 @@ footer {
 }
 
 .support-content .discord-btn:hover {
-    background-color: #d9c8a9; /* Direct hex for --warm-taupe */
-    color: #f5e8d5; /* Direct hex for --sandy-beige */
+    background-color: #d9c8a9;
+    color: #f5e8d5;
     transform: scale(1.05);
 }
