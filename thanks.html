@@ -7,23 +7,32 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>PantsPalace</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="support.html">Support</a>
-            <a href="howtobuy.html">How to Buy</a>
-        </nav>
-    </header>
-    <main>
-        <div class="content">
-            <h2>Thank You for Your Purchase!</h2>
-            <p>Your order has been successfully submitted. You will receive a confirmation email shortly.</p>
-            <a href="index.html" class="back">Back to Home</a>
+    <!-- Navigation Bar -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="PantsPalace Logo" class="logo"></a>
         </div>
-    </main>
+        <div class="nav-right">
+            <a href="support.html" class="nav-btn">Support</a>
+            <a href="index.html#products" class="nav-btn">Products</a>
+        </div>
+    </nav>
+
+    <!-- Thank You Section -->
+    <section class="thanks-section">
+        <div class="thanks-content">
+            <h1>Thank You!</h1>
+            <p>Your order has been successfully submitted. We’ll process it soon and send a confirmation to your PayPal email. Happy shopping!</p>
+            <a href="index.html#products" class="back-btn">Back to Products</a>
+        </div>
+    </section>
+
+    <!-- Cart Button -->
+    <a href="cart.html" class="cart-btn">Cart</a>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 PantsPalace. All rights reserved.</p>
+        <p>© 2025 PantsPalace. All rights reserved.</p>
     </footer>
 </body>
 </html>
