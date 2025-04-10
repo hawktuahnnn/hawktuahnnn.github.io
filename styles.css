@@ -4,7 +4,6 @@
     --light-tan: #e8d8c1;
     --dark-beige: #b89b7a;
     --text-color: #4a3c2f;
-    --nav-height: 80px; /* Adjust this to the actual height of your nav bar */
 }
 
 body {
@@ -195,7 +194,7 @@ body {
 
 .cart-notification {
     position: fixed;
-    top: calc(var(--nav-height) + 10px); /* Positions below the nav bar */
+    top: 80px;
     right: 20px;
     background-color: var(--dark-beige);
     color: var(--sandy-beige);
@@ -205,16 +204,12 @@ body {
     opacity: 0;
     transform: translateY(-20px);
     transition: opacity 0.3s ease, transform 0.3s ease;
-    z-index: 500;
-    pointer-events: none; /* Prevents clicks when hidden */
+    z-index: 2000;
 }
 
 .cart-notification.show {
     opacity: 1;
     transform: translateY(0);
-    z-index: 2000;
-    /* Uncomment the next line if the notification needs to be clickable when shown */
-    /* pointer-events: auto; */
 }
 
 .order-section {
@@ -501,4 +496,23 @@ footer {
     text-align: center;
     color: var(--sandy-beige);
     font-size: 14px;
+}
+
+/* New Discord Button Styles */
+.discord-btn {
+    display: inline-block;
+    background-color: var(--dark-beige);
+    color: var(--sandy-beige);
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+}
+
+.discord-btn:hover {
+    background-color: var(--warm-taupe);
+    transform: scale(1.05);
 }
