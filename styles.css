@@ -498,21 +498,22 @@ footer {
     font-size: 14px;
 }
 
-/* New Discord Button Styles */
+/* Updated Discord Button Styles */
 .discord-btn {
     display: inline-block;
     background-color: var(--dark-beige);
-    color: var(--sandy-beige);
+    color: var(--text-color); /* Dark text for contrast */
     padding: 12px 30px;
     text-decoration: none;
     border-radius: 5px;
     font-size: 18px;
     font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
     margin-top: 20px;
 }
 
 .discord-btn:hover {
     background-color: var(--warm-taupe);
+    color: var(--sandy-beige); /* Light text on hover, as before */
     transform: scale(1.05);
 }
