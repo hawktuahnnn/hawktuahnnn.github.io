@@ -310,7 +310,7 @@ body {
     margin: 0 0 30px;
 }
 
-.support-content a {
+.support-content a:not(.discord-btn) {
     color: var(--dark-beige);
 }
 
@@ -499,10 +499,10 @@ footer {
 }
 
 /* Updated Discord Button Styles */
-.discord-btn {
+.support-content .discord-btn {
     display: inline-block;
-    background-color: var(--dark-beige);
-    color: var(--text-color); /* Dark text for contrast */
+    background-color: #b89b7a; /* Direct hex for --dark-beige */
+    color: #4a3c2f; /* Direct hex for --text-color */
     padding: 12px 30px;
     text-decoration: none;
     border-radius: 5px;
@@ -512,8 +512,8 @@ footer {
     margin-top: 20px;
 }
 
-.discord-btn:hover {
-    background-color: var(--warm-taupe);
-    color: var(--sandy-beige); /* Light text on hover, as before */
+.support-content .discord-btn:hover {
+    background-color: #d9c8a9; /* Direct hex for --warm-taupe */
+    color: #f5e8d5; /* Direct hex for --sandy-beige */
     transform: scale(1.05);
 }
