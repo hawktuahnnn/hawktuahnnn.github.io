@@ -49,6 +49,9 @@ body {
     border-radius: 5px;
     font-weight: 600;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    pointer-events: auto; /* Ensure clicks are registered */
+    position: relative; /* Ensure z-index works */
+    z-index: 1100; /* Higher than potential overlapping elements */
 }
 
 .nav-btn:hover {
